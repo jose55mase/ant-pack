@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="card col-md-3">
+        <div class="card-header">
+            Crear producto
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+            
+                <form [formGroup]="formBulder">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Titulo</label>
+                        <input 
+                            formControlName = "name"
+                            type="text" 
+                            class="form-control"
+                            placeholder="Camisetas"
+                            aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Titulo para el producto.</small>
+                       
+                        <label for="exampleInputEmail1">Descripcion</label>
+                        <textarea 
+                            formControlName = "description"
+                            class="form-control"
+                            placeholder="Camisestas derportiva ..."
+                            rows="3">
+                        </textarea>
+                        <small id="emailHelp" class="form-text text-muted">Describa el producto.</small>
+                       
+                        <label for="exampleInputEmail1">Costo</label>
+                        <input 
+                            formControlName = "price"
+                            type="text" 
+                            class="form-control"
+                            placeholder="$ 45.009"
+                            aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Costo por unidad del producto.</small>
+                       
+                        <label for="exampleInputEmail1">Cantidad</label>
+                        <input 
+                            formControlName = "amount"
+                            type="text" 
+                            class="form-control"
+                            placeholder="5"
+                            aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Cantidad para este producto.</small>
+                    
+                        <label for="exampleInputEmail1">Imagen</label>
+                        <input 
+                            formControlName = "image"
+                            type="text" 
+                            class="form-control"
+                            placeholder="Camisetas"
+                            aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Inserte el link de la imagen</small>
+                    </div>
+                </form>
+    
+                <footer>
+                    <button *ngIf="!btn_saveUpdata" [disabled]="!formBulder.valid" (click)="save()" class="btn btn-block btn-success">Guardar</button>
+                    <button *ngIf="btn_saveUpdata"  [disabled]="!formBulder.valid" (click)="update()" class="btn btn-block btn-warning">Editar</button>
+                    <button *ngIf="btn_saveUpdata"  [disabled]="!formBulder.valid" type="reset" (click)="updateCancel()" class="btn btn-block btn-danger">Cancelar</button>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Lista</th>   
+                            
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of listProduct">
+              <tr>
+                <th scope="row">{{item.name}}</th>
+                <td>{{item.description}}</td>
+                <td>{{item.amount}}</td>
+                <td>$ {{item.price}}</td>
+                <td><img src="{{item.image}}" width="50px" alt=""></td>
+                <td>
+                    <button (click)="updateForm(item)" class ="btn btn-warning">
+                        <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+                            <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+                        </svg>
+                    </button>
+                </td>
+              </tr>               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- 
+    https://image.dhgate.com/0x0s/f2-albu-g6-M00-42-95-rBVaSFvT25yAfGAcAAoM0bZaA3I077.jpg/dise-o-de-botones-camisetas-casual-para-hombre.jpg
+-->
